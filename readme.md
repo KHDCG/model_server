@@ -8,6 +8,8 @@ encoding된 이미지를 {"img" : "encoding_img"} 형식으로 POST요청 보내
 
 # Guide
 
+[**Go to API Documentation**](./api-documentation.md)
+
 테스트시에는 [가상환경](#virtual-machine-run) 만들어서 requirements.txt를 설치한 후 실행하는 것을 권장.
 
 배포 테스트 시에는 도커로 로컬 테스트하고 image 배포 권장.
