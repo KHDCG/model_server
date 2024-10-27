@@ -55,40 +55,38 @@ async def inference(infer: Infer):
 
     return predict_data
     
-@router.get("/account/all_users")
-async def get_users():
-    users = list_serial(collection_name_user.find())
-    return users
+# @router.get("/account/all_users")
+# async def get_users():
+#     users = list_serial(collection_name_user.find())
+#     return users
 
-@router.post("/inference/test")
-async def inference(infer: InferTest):
-    encoding_img = infer.img
-    # print("encoding_type", type(encoding_img))
+# @router.post("/inference/test")
+# async def inference(infer: InferTest):
+#     encoding_img = infer.img
+#     # print("encoding_type", type(encoding_img))
     
-    output_dict = vit_inference(encoding_img)
-    # print("output_dict type : ", type(output_dict))
+#     output_dict = vit_inference(encoding_img)
+#     # print("output_dict type : ", type(output_dict))
 
+    # def numpy_converter(obj):
+    #     if isinstance(obj, np.ndarray):
+    #         return obj.tolist()  # numpy 배열을 리스트로 변환
+    #     raise TypeError("Object of type '%s' is not JSON serializable" % type(obj).__name__)
 
-
-    def numpy_converter(obj):
-        if isinstance(obj, np.ndarray):
-            return obj.tolist()  # numpy 배열을 리스트로 변환
-        raise TypeError("Object of type '%s' is not JSON serializable" % type(obj).__name__)
-
-    # json_str = json.dumps(output, default=numpy_converter)
+    # # json_str = json.dumps(output, default=numpy_converter)
     
-    # ndarray to string
-    all_predictions_str = output_dict["all_predictions"].tolist()
-    print("all_predictions_str : ", all_predictions_str)
-    print("type : ", type(all_predictions_str))
+    # # ndarray to string
+    # all_predictions_str = output_dict["all_predictions"].tolist()
+    # print("all_predictions_str : ", all_predictions_str)
+    # print("type : ", type(all_predictions_str))
 
-    output = {
-        "predicted_class" : output_dict["predicted_class"],
-        "probability" : output_dict["probability"],
-        "all_probability" : all_predictions_str,
-        "lime" : output_dict["lime"],
-        "vit" : output_dict["vit"]
-    }
-    print("output type : ", type(output))
+    # output = {
+    #     "predicted_class" : output_dict["predicted_class"],
+    #     "probability" : output_dict["probability"],
+    #     "all_probability" : all_predictions_str,
+    #     "lime" : output_dict["lime"],
+    #     "vit" : output_dict["vit"]
+    # }
+    # print("output type : ", type(output))
 
-    return output
+    # return output
