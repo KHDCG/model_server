@@ -11,6 +11,7 @@ RUN pip install lime
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install torch torchvision torchaudio transformers
 RUN cd pytorch-grad-cam && pip install .
+RUN pip install timm
 
 EXPOSE 8001
 
