@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y python3-opencv
 RUN pip install opencv-python
 RUN pip install lime
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install torch torchvision torchaudio transformers pytorch-grad-cam
 
 EXPOSE 8001
 
