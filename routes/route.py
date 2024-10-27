@@ -24,8 +24,6 @@ router = APIRouter()
 @router.post("/inference")
 async def inference(infer: Infer):
     encoding_img = infer.img
-    user_id = infer.user_id
-    pet_name = infer.pet_name
     # print("encoding_type", type(encoding_img))
     output_dict = vit_inference(encoding_img)
     # print("output_dict type : ", type(output_dict))
@@ -55,19 +53,7 @@ async def inference(infer: Infer):
 
     predict_data = output
 
-    try:
-        update_result = collection_name_user.update_one(
-            {"_id": ObjectId(user_id), "pet.p_name": pet_name},
-            {"$set": {"pet.$.predict": predict_data}}
-        )
-        if update_result.modified_count == 0:
-            print(f"No document found with user_id {user_id} and pet_name {pet_name}")
-        else:
-            print("Document updated successfully")
-
-    except Exception as e:
-        print(f"Error updating MongoDB: {e}")
-    return output
+    return predict_data
     
 @router.get("/account/all_users")
 async def get_users():
