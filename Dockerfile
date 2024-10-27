@@ -10,6 +10,7 @@ RUN pip install opencv-python
 RUN pip install lime
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install torch torchvision torchaudio transformers
+RUN cd pytorch-grad-cam && pip install .
 
 EXPOSE 8001
 
