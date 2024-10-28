@@ -47,7 +47,7 @@ async def inference(infer: Infer):
         "probability" : output_dict["probability"],
         "all_probability" : all_predictions_str,
         "lime" : output_dict["lime"],
-        "vit" : output_dict["vit"]
+        "grad_cam" : output_dict["vit"]
     }
     print("output type : ", type(output))
 
